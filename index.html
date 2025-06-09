@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .code-column {
+            position: absolute;
+            visibility: hidden;
+            white-space: nowrap;
+            color: rgba(0, 172, 230, 0.8);
+            font-size: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            animation: rain linear infinite;
+            opacity: 0;
+        }
+
+        .code-column.visible {
+            visibility: visible;
+        }
+
+        @keyframes rain {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: var(--fade-opacity);
+            }
+            100% {
+                transform: translateY(var(--fall-distance));
+                opacity: 0;
+            }
+        }
+
+        .title {
+            font-size: 4rem;
+            letter-spacing: 0.2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .title .pixel {
+            display: inline-block;
+            font-size: 1.5rem;
+            color: white;
+            margin: 0.2rem;
+            background-color: #00ace6;
+            width: 0.8rem;
+            height: 0.8rem;
+        }
+
+        .subtitle {
+            margin-top: -1rem;
+            font-size: 1.5rem;
+            color: #bbbbbb;
+            text-align: center;
+        }
+
+        .content {
+            max-width: 800px;
+            text-align: center;
+            margin: 2rem;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            margin: 1rem;
+            border: 2px solid #00ace6;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            background-color: black;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #00ace6;
+            color: black;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #555;
+            text-align: center;
+        }
+
+        .social-icons {
+            margin-top: 1rem;
+        }
+
+              :root {
+            --social-icon-color: #00ace6;
+            --social-icon-hover-color: white;
+        }
+
+        .social-icons a {
+            color: var(--social-icon-color);
+            text-decoration: none;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+.social-icons a:hover {
+    color: var(--social-icon-hover-color);
+}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="background"></div>
+
+    <div class="title">
+        <span class="pixel"></span>
+        <span class="pixel"></span>
+        <span class="pixel"></span>
+        <span>SCINTILLA</span>
+        <span class="pixel"></span>
+        <span class="pixel"></span>
+        <span class="pixel"></span>
+    </div>
+    <div class="subtitle">Where Ideas Take Shape</div>
+    <div class="content">
+        Scattered thoughts. Quick links. Shifting visions through current events, technology, and code.
+        A mental archive in constant motion.
+        Scroll, explore, lose the thread — or dive deeper down the rabbit hole and you might find yourself elsewhere.
+    </div>
+    <a href="dimez.html" class="button">Explore</a>
+    <a href="#contact" class="button">Get in Touch</a>
+    <div class="footer">
+       
+        <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+        <p>&copy; 2025 K1m1K. All rights reserved.</p>
+    </div>
+
+    <script>
+    const background = document.querySelector('.background');
+    const columnsCount = 15;
+    const columnHeight = 20;
+    const minSpacing = 100;
+    const usedPositions = [];
+    const symbols = ['@', '#', '$', '%', '&', '*', '+', '=']; // Simboli personalizzati
+
+    function getRandomPosition(minSpacing) {
+        let position;
+        let attempts = 0;
+        const maxAttempts = 50;
+
+        do {
+            position = Math.random() * 100;
+            attempts++;
+
+            const isFarEnough = usedPositions.every(usedPos => {
+                const distance = Math.abs(position - usedPos);
+                return distance > minSpacing / window.innerWidth * 100;
+            });
+
+            if (isFarEnough || attempts >= maxAttempts) {
+                usedPositions.push(position);
+                return position;
+            }
+        } while (attempts < maxAttempts);
+
+        return position;
+    }
+
+    function createColumn() {
+        const column = document.createElement('div');
+        column.classList.add('code-column');
+        
+        const position = getRandomPosition(minSpacing);
+        column.style.left = `${position}%`;
+
+        const duration = 8 + Math.random() * 7;
+        column.style.animationDuration = `${duration}s`;
+
+        const fadePoint = Math.random();
+        const fallDistance = fadePoint < 0.6 ? 
+            `${70 + Math.random() * 20}vh` : 
+            '100vh';
+
+        column.style.setProperty('--fall-distance', fallDistance);
+        column.style.setProperty('--fade-opacity', fadePoint < 0.6 ? '0' : '0.8');
+
+        // Genera i simboli personalizzati invece di 1 e 0
+        const binaryString = Array.from({ length: columnHeight }, () => {
+            const char = symbols[Math.floor(Math.random() * symbols.length)]; // Scegli simbolo casuale
+            const opacity = 0.3 + Math.random() * 0.7;
+            return `<span style="opacity: ${opacity}">${char}</span><br>`;
+        }).join('');
+        
+        column.innerHTML = binaryString;
+
+        background.appendChild(column);
+
+        // Trigger reflow before adding the visible class
+        column.offsetHeight;
+        
+        // Add visible class after a small delay
+        requestAnimationFrame(() => {
+            column.classList.add('visible');
+        });
+
+        // Remove and recreate column when animation ends
+        column.addEventListener('animationend', () => {
+            column.remove();
+            createColumn();
+        });
+    }
+
+    // Initial creation of columns with staggered starts
+    for (let i = 0; i < columnsCount; i++) {
+        setTimeout(() => {
+            createColumn();
+        }, i * 200); // Stagger the creation of each column by 200ms
+    }
+</script>
+
+</body>
+</html>
+

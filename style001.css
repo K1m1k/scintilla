@@ -1,0 +1,300 @@
+/* ================= */
+/* === Reset & Base === */
+/* ================= */
+
+body {
+    background-color: #000;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 2rem;
+    line-height: 1.7;
+    font-size: 18px;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    font-size: 1.1rem;
+}
+
+/* ================= */
+/* ====== Link globali ====== */
+/* ================= */
+
+a {
+    color: #00ace6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* ================= */
+/* ====== Nav ====== */
+/* ================= */
+
+nav {
+    background-color: #111;
+    padding: 1.2rem 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+nav a {
+    margin: 0 1.2rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+/* ================= */
+/* ====== Titoli ====== */
+/* ================= */
+
+h1, h2, h3, h4, h5, h6 {
+    color: #00ace6;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 2.4rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+}
+
+h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+}
+
+/* ================= */
+/* ====== Testo e liste ====== */
+/* ================= */
+
+p {
+    white-space: pre-line;
+    margin-bottom: 1.6rem;
+    font-size: 1.05rem;
+}
+
+ul, ol {
+    margin-left: 2rem;
+    margin-bottom: 1.6rem;
+    font-size: 1.05rem;
+}
+
+ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+ul li::marker {
+    color: #00ace6;
+}
+
+/* ================= */
+/* ====== Box informativi ====== */
+/* ================= */
+
+.note-box {
+    border: 1px solid #00ace6;
+    border-left: 4px solid #00ace6;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #fff;
+}
+
+.final-note {
+    margin-top: 2rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+
+
+.article-list li {
+    list-style: none;
+    margin: 1rem 0;
+}
+
+.article-list li a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.article-list .icon {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 4px;
+}
+
+
+/* ================= */
+/* ====== Codice ====== */
+/* ================= */
+
+pre {
+    background-color: #222;
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin-bottom: 1.6rem;
+    line-height: 1.4;
+    font-size: 0.95rem;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border: 1px solid #00ace6;
+}
+
+code {
+    background-color: #222;
+    color: #fff;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Blocco avanzato con pulsante copia */
+.code-block {
+    position: relative;
+    margin-bottom: 1.6rem;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: transparent;
+    color: #00ace6;
+    border: none;
+    padding: 0.2rem 0.4rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    border-radius: 0;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.copy-btn:hover {
+    color: #fff;
+}
+
+/* ================= */
+/* ====== Tabelle ====== */
+/* ================= */
+
+.table-wrapper {
+    padding: 1rem;
+    border: 1px solid #00ace6;
+    background-color: #1e1e1e;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 172, 230, 0.2);
+}
+
+.table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0;
+    color: #fff;
+    border: 1px solid #00ace6;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.table-wrapper th,
+.table-wrapper td {
+    border: 1px solid #444;
+    padding: 0.5rem 0.8rem;
+    vertical-align: top;
+}
+
+.table-wrapper thead {
+    background-color: #1a1a1a;
+    color: #00ace6;
+}
+
+.table-wrapper tbody tr:nth-child(odd) {
+    background-color: #222;
+}
+
+/* ================= */
+/* ====== Indice dei Contenuti ====== */
+/* ================= */
+
+#indice ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#indice li::before {
+    content: "•";
+    color: #00ace6;
+    margin-right: 0.5rem;
+}
+
+/* ================= */
+/* ====== Footer ====== */
+/* ================= */
+
+.footer {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: #555;
+    text-align: center;
+}
+
+.social-icons {
+    margin-top: 1rem;
+}
+
+:root {
+    --social-icon-color: #00ace6;
+    --social-icon-hover-color: white;
+}
+
+.social-icons a {
+    color: var(--social-icon-color);
+    text-decoration: none;
+    margin: 0 0.5rem;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--social-icon-hover-color);
+}
+
+/* ================= */
+/* ====== Responsive ====== */
+/* ================= */
+
+@media (max-width: 600px) {
+    body {
+        padding: 1rem;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    main {
+        max-width: 100%;
+        font-size: 1rem;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+        margin: 0 0.6rem;
+    }
+}

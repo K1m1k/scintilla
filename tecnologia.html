@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Tecnologia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style001.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">   
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="attualita.html">Attualità</a> |
+        <a href="riflessioni.html">Riflessioni</a> |
+        <a href="tecnologia.html">Tecnologia</a> |
+        <a href="geopolitica.html">Geopolitica</a> |
+        <a href="cybersec.html">CyberSec</a> |
+        <a href="contatti.html">Contatti</a>
+    </nav>
+
+    <main>
+        <h1>Mappare i dati usati dalle IA: perché è fondamentale e come possiamo farlo ?</h1>
+
+        <p>Negli ultimi anni, l’intelligenza artificiale ha raggiunto una diffusione capillare, con applicazioni che spaziano dalla medicina all’educazione, dalla pubblicità alla giustizia predittiva. Alla base di ogni modello c’è un elemento spesso trascurato ma essenziale: i dati su cui viene addestrato.</p>
+
+        <p>Oggi possiamo presumere che l’IA abbia già “divorato” gran parte dei macro-dati disponibili sul web: enciclopedie, articoli, social network, forum, archivi pubblici e privati. Ma, spinta da un’inesauribile fame di nuovi input, è ormai in una ricerca spasmodica di ulteriore “cibo” informativo. E non è escluso che, nel tentativo di alimentarsi ancora, arrivi a raschiare anche le fogne digitali del web: contenuti tossici, spazzatura informativa, disinformazione, ironia travestita da verità.</p>
+
+        <p>In questo scenario, comprendere quali e quanti dati siano già stati utilizzati per addestrare i modelli di IA, e farlo in modo aggiornabile e trasparente, non è solo una questione tecnica, ma una sfida politica e culturale. In questo articolo proponiamo un approccio concreto per affrontarla — e riflettiamo su alcuni rischi ancora troppo poco discussi.</p>
+
+        <h2>Riflessione: dati falsi, ironia e il rischio (ipotetico) di avvelenare i modelli</h2>
+
+        <p>Sta diventando sempre più evidente la diffusione di contenuti online ironici o volutamente falsi. Articoli del tipo: “Scienziati creano un asino che vola nello spazio” appaiono inizialmente come semplici scherzi, provocazioni o piccoli inganni virali. Tuttavia, è lecito domandarsi: che fine fanno realmente questi contenuti?</p> 
+
+        <p>Rimangono confinati nel circuito dell’intrattenimento, oppure — anche solo parzialmente — entrano nei dataset che alimentano i modelli di intelligenza artificiale?</p>
+
+        <p>Viviamo immersi in una rete dove ironia, parodia e disinformazione convivono con conoscenza autentica e contenuti strutturati. Se le IA si nutrono in modo massivo e opaco del materiale disponibile online, è plausibile che anche questi elementi “laterali” — satira, notizie inventate, meme assurdi — possano confluire nel brodo primordiale dell’apprendimento automatico.</p>
+
+        <p>Ma con quali conseguenze? È possibile che influenzino, anche in modo impercettibile, il comportamento o la percezione del mondo di un modello? Oppure il volume complessivo dei dati è così elevato da rendere marginale l’impatto di queste deviazioni?</p>
+
+        <p>Sappiamo che esistono filtri e meccanismi di pulizia. Ma quanto sono efficaci? E soprattutto, sappiamo davvero cosa viene escluso e in base a quali criteri? Chi decide cosa è “spazzatura” e cosa è “verità”?</p>
+
+        <p>Un’altra questione inquietante riguarda il riciclo dei contenuti. Oggi molte IA si nutrono non solo di fonti umane, ma anche di testi e immagini generati da altre IA. Questo solleva ulteriori dubbi: cosa accade quando un modello apprende da un altro modello che, a sua volta, è stato addestrato su dati generati artificialmente?</p>
+
+        <p>E infine: esiste una difesa efficace contro possibili attacchi intenzionali? Se qualcuno volesse creare dati falsi ad hoc per “avvelenare” modelli concorrenti, sarebbe tecnicamente possibile?</p>
+
+        <p>Alcuni studi già discutono del cosiddetto <em>data poisoning</em>: tecniche per contaminare i dati di addestramento e danneggiare la performance di un’IA. Ma le contromisure esistenti sono sufficienti?</p>
+
+        <h2>Perché è importante sapere quali dati nutrono le IA</h2>
+
+        <p>La qualità e l’origine dei dati determinano il comportamento, i limiti e i bias di ogni sistema di intelligenza artificiale. Tracciare i dati usati nei processi di addestramento è fondamentale per:</p>
+        <ul>
+            <li><strong>Garantire trasparenza e fiducia</strong>: utenti, cittadini e istituzioni devono sapere da dove proviene il “sapere” di un’IA.</li>
+            <li><strong>Prevenire bias sistemici</strong>: analizzando la composizione dei dataset, si possono evitare modelli discriminatori o distorti.</li>
+            <li><strong>Consentire audit indipendenti</strong>: una mappa dei dati consente valutazioni oggettive e confronti tra modelli.</li>
+            <li><strong>Evitare duplicazioni e sprechi</strong>: conoscere ciò che è già stato usato migliora l’efficienza della ricerca e dell’innovazione.</li>
+        </ul>
+
+        <h2>Un approccio strutturato per mappare i dati IA</h2>
+
+        <p>Proponiamo un processo in cinque fasi per costruire un inventario globale, aggiornabile e trasparente dei dati utilizzati per addestrare le IA:</p>
+        <ol>
+            <li><strong>Creare un inventario dei dataset pubblici e noti</strong><br>
+                Raccogliere e catalogare dataset open source con metadati su tipo, volume, provenienza, finalità.
+            </li>
+            <li><strong>Collaborare con aziende e istituzioni</strong><br>
+                Promuovere trasparenza tramite registri pubblici o dichiarazioni volontarie sull’uso dei dati.
+            </li>
+            <li><strong>Definire uno standard di reporting</strong><br>
+                Stabilire criteri minimi per struttura, qualità e metadati condivisi tra enti.
+            </li>
+            <li><strong>Costruire una piattaforma centralizzata</strong><br>
+                Una banca dati aperta e accessibile, con supporto per revisioni e API.
+            </li>
+            <li><strong>Integrare strumenti di monitoraggio automatico</strong><br>
+                Utilizzare tecniche automatiche per individuare e aggiornare i dataset rilevanti.
+            </li>
+        </ol>
+
+        <h2>Standard aperti e verificabili: un’urgenza concreta</h2>
+
+        <p>Ogni dataset dovrebbe includere metadati minimi:</p>
+        <ul>
+            <li>Origine (pubblica, commerciale, sintetica, ecc.)</li>
+            <li>Contenuto (tipologia, sensibilità, dominio semantico)</li>
+            <li>Volume e aggiornamenti</li>
+            <li>Filtraggio applicato (tipo, livello, criteri)</li>
+            <li>Licenze e tracciabilità</li>
+        </ul>
+
+        <h2>Conclusione: serve consapevolezza, serve infrastruttura</h2>
+
+        <p>I dati non sono più solo “benzina”: sono il DNA cognitivo delle IA. Se vogliamo costruire sistemi etici e affidabili, dobbiamo sapere da dove provengono le informazioni che li alimentano.</p>
+
+        <p>Mappare i dataset, stabilire criteri di qualità, creare infrastrutture aperte e aggiornabili è una delle sfide più urgenti della nuova era.</p>
+
+        <p>Un’IA senza trasparenza sui suoi dati non è solo un problema tecnico: è un problema culturale e democratico.</p>
+
+        <h3>Vuoi contribuire a costruire una mappa globale dei dati IA?</h3>
+
+        <p>Se ti occupi di ricerca, open data, informatica, filosofia o giornalismo e vuoi contribuire a questo progetto, contattami. Lavorare insieme su strumenti, piattaforme o standard condivisi può davvero fare la differenza.</p>
+
+        <h2>Difese e contromisure già esistenti</h2>
+
+        <ul>
+            <li>Filtri e pulizia dati (Data Cleaning)</li>
+            <li>Curazione manuale o semi-automatica dei dataset critici</li>
+            <li>Metriche di qualità e tecniche di data validation</li>
+            <li>Algoritmi emergenti per rilevare data poisoning</li>
+            <li>Audit di bias e fairness</li>
+            <li>Iniziative di trasparenza (es. datasheets for datasets, model cards)</li>
+        </ul>
+
+        <h2>Roadmap proposta</h2>
+
+        <ol>
+            <li>Inventario globale dei dataset pubblici e noti</li>
+            <li>Collaborazione pubblico-privato e trasparenza</li>
+            <li>Standard comune per il reporting</li>
+            <li>Piattaforma centralizzata e aperta</li>
+            <li>Strumenti automatici di monitoraggio</li>
+        </ol>
+
+        <h2>Ulteriori riflessioni e suggerimenti</h2>
+
+        <ul>
+            <li>Normative e governance: servono regole simili al GDPR</li>
+            <li>Educazione e consapevolezza per sviluppatori e utenti</li>
+            <li>Standard internazionali per evitare frammentazione</li>
+            <li>Ricerca continua su data poisoning e bias</li>
+            <li>Explainability per capire come i dati influenzano i modelli</li>
+        </ul>
+    </main>
+
+     <!-- Footer -->
+    <div class="footer">
+        <div class="social-icons">
+            <a href="https://facebook.com"  target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://instagram.com"  target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com"  target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+        <p>&copy; 2025 K1m1K. All rights reserved.</p>
+    </div>
+</body>
+</html>
