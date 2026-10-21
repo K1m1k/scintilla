@@ -107,12 +107,23 @@ function scEsc(s) {
      { h2: "..." }                -> <h2>
      { ul: ["...", "..."] }       -> <ul>
      { code: "...", caption:"" }  -> <figure class="snippet">  */
+/* Inline formatting inside paragraphs and list items (text is escaped first):
+     [text](https://…)  -> link (opens in a new tab)
+     **text**           -> bold
+     *text*             -> italic */
+function scInline(s) {
+  return scEsc(s)
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*\s][^*]*)\*/g, '<em>$1</em>');
+}
+
 function scRenderBody(body) {
   const esc = scEsc;
   return (body || []).map((b) => {
-    if (typeof b === 'string') return `<p>${esc(b)}</p>`;
+    if (typeof b === 'string') return `<p>${scInline(b)}</p>`;
     if (b.h2) return `<h2>${esc(b.h2)}</h2>`;
-    if (b.ul) return `<ul>${b.ul.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`;
+    if (b.ul) return `<ul>${b.ul.map((i) => `<li>${scInline(i)}</li>`).join('')}</ul>`;
     if (b.code) {
       const cap = b.caption ? `<figcaption>${esc(b.caption)}</figcaption>` : '';
       return `<figure class="snippet"><pre><code>${esc(b.code)}</code></pre>${cap}</figure>`;

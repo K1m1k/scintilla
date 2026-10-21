@@ -199,6 +199,89 @@ window.SITE = {
   // Set "featured: true" on the one to highlight at the top.
   articles: [
     {
+      "id": "reality-impossible-to-verify",
+      "title": "When Reality Itself Becomes Impossible to Verify",
+      "date": "Oct 2026",
+      "read": "8 min read",
+      "excerpt": "Artificial intelligence, photography and the increasingly fragile boundary between what happened and what merely appears to have happened.",
+      "body": [
+        "*Artificial intelligence, photography, and the increasingly fragile boundary between what happened and what merely appears to have happened.*",
+        "We live in an age in which technology allows us to document the world with unprecedented ease. With a smartphone and a few seconds, we can record an event, photograph a situation, or share what we have witnessed with millions of people.",
+        "For a long time, photographs and videos have been regarded as relatively reliable evidence that something happened. We knew they could be manipulated, cropped, or presented out of context, but images still carried significant documentary value: someone had been there, pointed a camera at something, and recorded what they saw.",
+        "The evolution of artificial intelligence is challenging that assumption. And the problem is not simply that it is becoming possible to create increasingly realistic fakes. It also concerns the way the photographs we consider authentic are produced in the first place.",
+        {
+          "h2": "When a Camera Does More Than Record"
+        },
+        "Today, smartphones do not simply capture the light reaching an image sensor. They automatically process images, combine multiple exposures, adjust lighting, reduce noise, and enhance sharpness. In certain modes, artificial intelligence can even reconstruct details that were not clearly visible in the original image.",
+        "A telling example is the controversy surrounding photographs of the Moon taken with certain Samsung Galaxy smartphones. In 2023, an experiment showed that a device could transform a deliberately blurred image of the Moon into a photograph containing far more clearly defined details than the source image itself.",
+        "Samsung explained that its system combined multiple shots and used artificial intelligence to enhance details.",
+        "The experiment did not prove that every Moon photograph taken with these phones is fake. It did, however, raise a fundamental question: if a device can reconstruct visual information based on what it has learned, to what extent does the final photograph represent what the sensor actually captured, and at what point does it begin to represent what the algorithm has reconstructed?",
+        "[Further reading: Android Authority, March 2023](https://www.androidauthority.com/samsung-response-moon-photo-controversy-3298513/).",
+        "This issue becomes even more significant when we consider that these technologies are no longer limited to unusual or specialized cases. Computational processing has become an integral part of everyday digital photography. The image we see on a screen may be the result of a combination of captured information, estimates, corrections, and details reconstructed by software.",
+        "This does not mean that an edited photograph is automatically false. It means that the relationship between a real-world event and its digital representation has become more complicated.",
+        {
+          "h2": "When an Authentic Photograph Is Mistaken for a Fake"
+        },
+        "There is a second problem that is less obvious but just as concerning: doubt does not affect only artificial images. It can also affect genuine ones.",
+        "In 2024, several photographers reported that authentic images posted on Facebook and Instagram were being labeled “Made with AI.” In some cases, the labels were triggered by technical indicators associated with AI-powered editing tools, even when the changes made to the images were limited.",
+        "Meta acknowledged that its labels did not always align with users' expectations and changed the wording, introducing the more general label “AI info.”",
+        "[Sources: TechCrunch, June 21, 2024](https://techcrunch.com/2024/06/21/meta-tagging-real-photos-made-with-ai/) and [Meta's official explanation of its AI content labels](https://about.fb.com/news/2024/04/metas-approach-to-labeling-ai-generated-content-and-manipulated-media/).",
+        "An even more recent case involves automated detection systems.",
+        "On October 21, 2026, the British fact-checking organization Full Fact documented five images posted by politicians that Google's SynthID detector identified as having been created or edited using AI, despite the people who posted them saying they had not used the technology.",
+        "One example involved a photograph uploaded directly from an iPhone. The system flagged some trees in the background as suspicious, without providing sufficient evidence to demonstrate that the image had been generated or manipulated using AI.",
+        "Following Full Fact's investigation, Google updated the system. When Full Fact checked the images again, the result had changed to “Unsure.”",
+        "The investigation did not establish that automatic smartphone processing had caused these results, nor did it determine how frequently similar errors occur. It did, however, demonstrate that even a system designed to identify artificial content can produce misleading results and must be used alongside other forms of verification.",
+        "[Read Full Fact's investigation](https://fullfact.org/toolkit/google-synthid-detector-flagging-apparently-real-images/).",
+        "These cases highlight a fundamental distinction: detecting a signal associated with AI does not necessarily prove that a scene was fabricated. Likewise, failing to detect such a signal does not prove that an image is authentic.",
+        {
+          "h2": "When Fake Becomes Indistinguishable from Real"
+        },
+        "The central question is what might happen in the coming years.",
+        "On one hand, we have systems capable of generating increasingly realistic images and videos. On the other, we have cameras and smartphones that automatically enhance the content they capture, sometimes changing details in the process.",
+        "Both developments are happening at the same time.",
+        "We could therefore find ourselves looking at images generated entirely by AI that appear identical to real photographs, while photographs of events that actually took place may contain elements reconstructed or altered by image-processing systems.",
+        "In such a scenario, distinguishing authentic content from artificial content based on appearance alone could become increasingly difficult.",
+        "We do not need to imagine a technology capable of fooling every existing detection system. It would be enough for there to be no universal method that could establish the origin of every image with certainty, regardless of the device used, the processing applied, or the steps through which the file passed before reaching us.",
+        "The difficulty is not limited to recognizing images generated from scratch. Authentic footage can be cropped, enhanced, recompressed, or subsequently modified. Some changes may be harmless; others can alter the meaning of a scene, while others still can introduce details that were never captured in the first place.",
+        "The boundary between documentary photography and artificial reconstruction is no longer necessarily clear-cut.",
+        {
+          "h2": "Verifying an Image's History, Not Just Its Appearance"
+        },
+        "One possible response is to develop systems that document not only the final result, but also its provenance and the changes made along the way.",
+        "Initiatives such as the C2PA standard already exist. They make it possible to attach verifiable credentials to digital content, documenting its origin and history. Some technologies can also digitally sign an image at the moment of capture, creating a verifiable link to the device or system that produced it.",
+        "These tools can help make verification more reliable. However, they are not an absolute guarantee.",
+        "Provenance records may be incomplete, may be lost when content is shared, or may no longer be available when an image is recovered outside its original context. Moreover, proving that a file came from a particular camera does not automatically prove that the scene it depicts corresponds to reality.",
+        "A photograph may have been taken with a genuine camera yet depict a staged event. A video may be authentic but presented out of context. A digital credential can document an image's history without certifying the truth of everything it represents.",
+        "The C2PA standard explicitly recognizes this distinction: verifiable provenance provides important information about a piece of content's origin and modifications, but it does not, by itself, establish whether that content is true.",
+        "[Official C2PA documentation](https://spec.c2pa.org/specifications/specifications/2.2/explainer/Explainer.html).",
+        "The challenge, therefore, is not simply to create better labels. We need verification systems that clearly distinguish between AI-generated content, content modified using AI, content with documented provenance, and content whose origin cannot be established with sufficient confidence.",
+        "Above all, we must ensure that an automated assessment is not presented as a certainty when it is merely a probabilistic indication.",
+        {
+          "h2": "The Liar's Dividend: When the Truth Can Be Denied"
+        },
+        "There is another consequence that may be even more dangerous, affecting the relationship between technology, information, and accountability.",
+        "In a world where we know that images and videos can be convincingly falsified, it becomes easier to challenge authentic evidence as well.",
+        "Someone caught on camera doing something could claim that the video was artificially generated. A politician could deny the authenticity of a damaging recording. An organization could dismiss documentary photography as manipulation without having to demonstrate that it actually is.",
+        "In academic research, this phenomenon is known as the *liar's dividend*. The concept was explored in detail in 2019 by legal scholars Robert Chesney and Danielle Citron in their study of deepfakes.",
+        "The advantage arises precisely because people have become aware that digital content can be fabricated. Anyone seeking to avoid accountability for something that really happened can exploit the general uncertainty surrounding the authenticity of evidence.",
+        "It is no longer necessary to convince everyone that the evidence is fake. It may be enough to make the possibility of fabrication seem plausible.",
+        "[Study: Chesney and Citron, *Deep Fakes: A Looming Challenge for Privacy, Democracy, and National Security*, California Law Review, 2019](https://www.californialawreview.org/print/deep-fakes-a-looming-challenge-for-privacy-democracy-and-national-security).",
+        "The damage, therefore, is not limited to the risk of believing something that never happened. It also includes the opposite risk: no longer believing what actually did happen.",
+        {
+          "h2": "What Will We Be Able to Trust?"
+        },
+        "I do not believe we should regard a future in which every image becomes impossible to verify as inevitable. Forensic tools will continue to evolve, authentication technologies may improve, and the combination of independent sources may allow us to verify many events with a high degree of confidence.",
+        "Nevertheless, I believe we need to confront a fundamental change: visual realism alone can no longer be treated as sufficient proof of authenticity.",
+        "Trust will increasingly have to rest on documented provenance, file integrity, transparency about how content has been processed, and the ability to compare images with independent accounts and corroborating evidence.",
+        "At the same time, developers of detection systems and the platforms that use them should clearly distinguish between content positively identified as synthetic, content modified using AI, and content whose origin cannot be determined. When a system is uncertain, it should communicate that uncertainty rather than turn it into a verdict.",
+        "Technology can help us verify reality, but it should not replace verification with a new form of blind trust in its own conclusions.",
+        "**The question I am asking, therefore, is not simply whether artificial intelligence will eventually be capable of creating images indistinguishable from reality. It is whether we will be able to preserve sufficiently reliable ways of proving that a photograph or video genuinely documents an event that took place.**",
+        "Because the greatest risk is not simply living in a world where false evidence can be manufactured. It is living in a world where, precisely because such fabrication is possible, even genuine evidence can be called into question without there always being an accessible and conclusive way to establish the truth.",
+        "And if we ever reach that point, the problem will no longer concern image technology alone. It will concern our collective ability to distinguish facts from their representations and to establish, on the basis of verifiable evidence, what we can reasonably believe."
+      ]
+    },
+
+    {
       id: "superficie-d-attacco",
       featured: true,
       title: "The Target Is the Attack Surface",
