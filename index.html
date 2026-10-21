@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scintilla — K1m1k</title>
+<meta name="description" content="Scintilla: projects, articles and reflections by K1m1k on artificial intelligence, technology, power and society.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script>
+/* Skip the boot intro when returning to the home page from an inner page
+   (menu links carry a #section) or when it was already shown this session. */
+try {
+  var sameSite = document.referrer && new URL(document.referrer).origin === location.origin;
+  if (location.hash || sameSite || sessionStorage.getItem('sc-booted')) {
+    document.documentElement.classList.add('no-boot');
+  }
+} catch (e) {}
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050608'/%3E%3Crect x='12' y='12' width='8' height='8' fill='%2300ace6'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<div id="boot"><pre class="boot-term" id="boot-text"></pre></div>
+<button class="boot-skip" id="boot-skip">press any key to skip →</button>
+
+<canvas id="rain"></canvas>
+
+<div class="page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#home">SCIN<b>TILLA</b></a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu">≡</button>
+    <nav class="nav-links" id="nav-links">
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#writing">Writing</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="wrap">
+      <div class="kicker prompt">whoami</div>
+      <h1>SCINTILLA<span class="dot"></span></h1>
+      <p class="sub">Projects, articles and reflections by <b>K1m1k</b></p>
+      <p class="lead">Self-taught developer from Italy. I build software end to end — mobile apps,
+      AI systems and distributed infrastructure — and I write about technology, power and society.
+      I care about code that's honest about what it does: clear consent, open source, nothing running
+      behind the user's back.</p>
+      <div class="cta">
+        <a class="btn" href="#projects">View projects</a>
+        <a class="btn ghost" href="#writing">Read writing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-tag">projects</span>
+        <h2 class="sec-title">What I build</h2>
+        <p class="sec-intro">Click a project to open its page — what it is, the technology behind it,
+        and how security and privacy are handled.</p>
+      </div>
+      <div class="cards" id="projects-grid"></div>
+      <p class="note">Besides these, I keep a few other projects I prefer not to list here.</p>
+    </div>
+  </section>
+
+  <!-- WRITING -->
+  <section id="writing">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-tag">writing</span>
+        <h2 class="sec-title">Writing</h2>
+        <p class="sec-intro">Reflections on artificial intelligence, power, society and security.</p>
+      </div>
+      <div class="feature reveal" id="featured"></div>
+      <div class="articles reveal" id="articles-list"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-tag">about</span>
+        <h2 class="sec-title">About</h2>
+      </div>
+      <div class="about-grid reveal">
+        <div>
+          <p>I'm Kim — <b>K1m1k</b> online. A self-taught developer who learns by building: I take an
+          idea and turn it into something that actually runs, from the first line of code to a working
+          product.</p>
+          <p>My work moves between applied AI, accessibility, distributed systems and privacy. Alongside
+          the code, I write essays about how technology reshapes power and everyday life — because the
+          tools we build are never neutral.</p>
+          <p>Whatever I make, one principle stays fixed: software should be honest about what it does.</p>
+        </div>
+        <aside class="focus">
+          <h4>Focus areas</h4>
+          <ul>
+            <li>Artificial intelligence</li>
+            <li>Accessibility tools</li>
+            <li>Distributed systems</li>
+            <li>Security &amp; privacy</li>
+            <li>Essays &amp; writing</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-tag">contact</span>
+        <h2 class="sec-title">Get in touch</h2>
+        <p class="sec-intro">For collaborations, ideas, or just to exchange thoughts.</p>
+      </div>
+      <div class="contact-grid reveal">
+        <form id="contact-form" novalidate>
+          <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" autocomplete="name"></div>
+          <div class="field"><label for="cf-email">Your email</label><input id="cf-email" name="email" type="email" autocomplete="email"></div>
+          <div class="field"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" required></textarea></div>
+          <button class="btn" type="submit">Send message</button>
+          <p class="form-note" id="form-note"></p>
+        </form>
+        <div class="contact-side">
+          <p>Prefer a direct channel? You'll find my code and projects on GitHub — issues and messages
+          there reach me too.</p>
+          <a class="btn ghost" href="https://github.com/K1m1k" target="_blank" rel="noopener">GitHub → K1m1k</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap"><span class="prompt">scintilla</span> — © 2026 K1m1k. All rights reserved.</div>
+</footer>
+</div>
+
+<script src="data/content.js"></script>
+<script src="assets/script.js"></script>
+</body>
+</html>
