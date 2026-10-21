@@ -42,14 +42,33 @@
     return;
   }
   try { sessionStorage.setItem('sc-booted', '1'); } catch (e) {}
+  // Fit every line to the terminal width, so nothing wraps on small phones:
+  // measure how many characters fit, then size the dot leaders to match.
+  function columns() {
+    const probe = document.createElement('span');
+    probe.textContent = 'MMMMMMMMMM';
+    probe.style.visibility = 'hidden';
+    term.appendChild(probe);
+    const cw = probe.getBoundingClientRect().width / 10 || 9;
+    term.removeChild(probe);
+    const cs = getComputedStyle(term);
+    const inner = term.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    return Math.max(18, Math.min(35, Math.floor(inner / cw)));
+  }
+  const cols = columns();
+  const status = (label) => {
+    const text = cols >= 35 ? label : label.replace(' in real time', '');
+    return text + ' ' + '.'.repeat(Math.max(2, cols - text.length - 4)) + ' ok';
+  };
   const lines = [
-    'Scintilla // the notebook of K1m1k',
-    'Loading reflections............  ok',
-    'Loading projects...............  ok',
-    'Compiling ideas in real time...  ok',
+    cols >= 34 ? 'Scintilla // the notebook of K1m1k' : 'Scintilla // K1m1k',
+    status('Loading reflections'),
+    status('Loading projects'),
+    status('Compiling ideas in real time'),
     '',
     'Welcome.',
   ];
+  if (skip && matchMedia('(hover: none)').matches) skip.textContent = 'tap to skip →';
   let done = false;
   function finish() {
     if (done) return;

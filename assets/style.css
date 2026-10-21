@@ -216,3 +216,12 @@ footer.foot { padding: 30px 0 52px; color: var(--ink-faint); font-size: .82rem; 
 
 /* boot intro skipped (returning visitor / coming from an inner page) */
 html.no-boot #boot, html.no-boot #boot-skip { display: none; }
+
+/* boot intro on phones: smaller type, tighter box, no wrapping */
+@media (max-width: 600px) {
+  #boot { padding: 16px; }
+  .boot-term { min-height: 0; padding: 20px 16px; font-size: clamp(11px, 3.6vw, 15px);
+    white-space: pre; overflow: hidden; }
+  .boot-skip { left: 0; right: 0; bottom: calc(18px + env(safe-area-inset-bottom));
+    text-align: center; font-size: .85rem; padding: 10px; }
+}
