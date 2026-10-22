@@ -217,6 +217,8 @@ function scRenderBody(body) {
   root.innerHTML = body.length
     ? scRenderBody(body)
     : '<p class="mono-faint">More details coming soon.</p>';
+  const note = document.getElementById('project-note');
+  if (note && p.detail && p.detail.note) note.textContent = p.detail.note;
 })();
 
 /* Mobile menu. */

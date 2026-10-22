@@ -27,6 +27,55 @@ window.SITE = {
   // not the real source code or the internal structure of the projects.
   projects: [
     {
+      id: "emersione",
+      name: "Emersione",
+      meta: "Web platform · labour & public interest",
+      desc: "Cross-checks what a business declares against what its work really requires, and flags the gaps that deserve a human look. Open source, built to be proposed to public institutions.",
+      tags: ["Python", "Starlette", "Explainable AI"],
+      detail: {
+        tagline: "Undeclared work can hide from an inspector's eyes. Hiding from its own contradictions is much harder.",
+        note: "Emersione is open source (code under EUPL-1.2, documentation under CC BY 4.0): its source code, methodology and known limits are public on GitHub.",
+        body: [
+          { h2: "What it is" },
+          "Emersione — Italian for \"surfacing\" — is a platform for spotting possible undeclared and irregular work. It compares what a business declares (staff, hours, labour costs, output) with what its activity would realistically require, and points out the gaps that deserve a closer look by a human inspector.",
+          "It grew out of an essay I wrote, [Can an Algorithm Help Bring Undeclared Work to Light?](https://k1m1k.github.io/scintilla/writing/article.html?id=algoritmo-lavoro-irregolare) I wanted to find out whether that idea could stand up as working software. It is the project I would most like to see in the hands of public institutions.",
+          { h2: "How it is built" },
+          { ul: [
+            "Python, with Starlette and Jinja2 for a lightweight web interface and SQLite for local storage.",
+            "A rule engine driven by a declarative registry: each sector — agriculture, construction, logistics, hospitality — is a formula plus sourced coefficients, not hidden code.",
+            "Connectors for public data sources (ISTAT, ANAC) and CSV imports, each with declared provenance.",
+            "PDF reports with a verifiable fingerprint, and 116 automated tests run on every change."
+          ] },
+          { h2: "Explainable by design" },
+          "The hard part of a tool like this is not computing a score — it is being able to justify it. Every result can be traced back to its formula, its coefficients and their sources. Before a result is shown, each parameter is pushed 20% up and down: if the conclusion flips, the result is declared unstable instead of being presented as solid. Missing or implausible data give \"not assessable\", never a silent zero.",
+          { code:
+"# Illustrative sketch — simplified from the real engine.\n" +
+"# A gap only counts if it survives a ±20% change\n" +
+"# in each uncertain parameter.\n\n" +
+"def robustness(expected_fn, declared, params, threshold):\n" +
+"    outcomes = set()\n" +
+"    for name in params:\n" +
+"        for factor in (0.8, 1.0, 1.2):\n" +
+"            p = {**params, name: params[name] * factor}\n" +
+"            expected = expected_fn(p)\n" +
+"            outcomes.add((expected - declared) / expected > threshold)\n" +
+"    return \"stable\" if len(outcomes) == 1 else \"unstable\"",
+            caption: "The robustness idea: a flag that depends on the exact value of an uncertain coefficient is not a flag — it is reported as unstable." },
+          { h2: "Safeguards & privacy" },
+          "A tool that looks at businesses and workers can do harm if it is used carelessly, so the limits are built in:",
+          { ul: [
+            "It does not establish wrongdoing, estimate guilt or publish rankings: it suggests where to look, and every decision stays with a person.",
+            "Confidential data stay with the authorized public body; on its own, the platform collects only public information, respecting each site's rules.",
+            "Role-based access with separation of duties: whoever proposes a coefficient cannot approve it.",
+            "A tamper-evident audit trail: every action is chained to the previous one, so any change leaves a trace.",
+            "A new sector starts as a draft and produces no results until it passes automated tests and human approval."
+          ] },
+          "Unlike my other projects, Emersione is fully open source: a tool that touches work, businesses and people's rights should be open to scrutiny.",
+          "Version 3.1 is a complete prototype, but it runs on synthetic data and its coefficients are still hypotheses to be verified. What it needs now cannot be written in code: lawful access to real data, the outcomes of past inspections to measure how often a flag is right, and independent review. If you work in research, in a public administration or in data protection, or you know the field first-hand, [the project is on GitHub](https://github.com/K1m1k/Emersione) and [its Discussions are open](https://github.com/K1m1k/Emersione/discussions)."
+        ]
+      }
+    },
+    {
       id: "mialifeapp",
       name: "MiaLifeApp",
       meta: "Android app · personal safety",
