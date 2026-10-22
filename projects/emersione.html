@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- pagina generata da genera_pagine.py: non modificare a mano -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emersione — Scintilla</title>
+<meta name="description" content="Cross-checks what a business declares against what its work really requires, and flags the gaps that deserve a human look. Open source, built to be proposed…">
+<meta name="author" content="K1m1k">
+<link rel="canonical" href="https://k1m1k.github.io/scintilla/projects/emersione.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Scintilla">
+<meta property="og:title" content="Emersione">
+<meta property="og:description" content="Cross-checks what a business declares against what its work really requires, and flags the gaps that deserve a human look. Open source, built to be proposed…">
+<meta property="og:url" content="https://k1m1k.github.io/scintilla/projects/emersione.html">
+<meta property="og:image" content="https://k1m1k.github.io/scintilla/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+</head>
+<body>
+<canvas id="rain"></canvas>
+<div class="page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../index.html#home">SCIN<b>TILLA</b></a>
+    <nav class="nav-links sub">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#writing">Writing</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<article class="article-page project-page">
+  <a class="back" href="../index.html#projects">← back to projects</a>
+  <h1 id="project-title">Emersione</h1>
+  <div class="byline" id="project-meta">Web platform · labour &amp; public interest</div>
+  <div class="tags" id="project-tags"><span class="tag">Python</span><span class="tag">Starlette</span><span class="tag">Explainable AI</span></div>
+  <p class="project-tagline" id="project-tagline">Undeclared work can hide from an inspector's eyes. Hiding from its own contradictions is much harder.</p>
+  <div id="project-body" data-static="1">
+  <h2>What it is</h2>
+  <p>Emersione — Italian for &quot;surfacing&quot; — is a platform for spotting possible undeclared and irregular work. It compares what a business declares (staff, hours, labour costs, output) with what its activity would realistically require, and points out the gaps that deserve a closer look by a human inspector.</p>
+  <p>It grew out of an essay I wrote, <a href="https://k1m1k.github.io/scintilla/writing/algoritmo-lavoro-irregolare.html" target="_blank" rel="noopener">Can an Algorithm Help Bring Undeclared Work to Light?</a> I wanted to find out whether that idea could stand up as working software. It is the project I would most like to see in the hands of public institutions.</p>
+  <h2>How it is built</h2>
+  <ul><li>Python, with Starlette and Jinja2 for a lightweight web interface and SQLite for local storage.</li><li>A rule engine driven by a declarative registry: each sector — agriculture, construction, logistics, hospitality — is a formula plus sourced coefficients, not hidden code.</li><li>Connectors for public data sources (ISTAT, ANAC) and CSV imports, each with declared provenance.</li><li>PDF reports with a verifiable fingerprint, and 116 automated tests run on every change.</li></ul>
+  <h2>Explainable by design</h2>
+  <p>The hard part of a tool like this is not computing a score — it is being able to justify it. Every result can be traced back to its formula, its coefficients and their sources. Before a result is shown, each parameter is pushed 20% up and down: if the conclusion flips, the result is declared unstable instead of being presented as solid. Missing or implausible data give &quot;not assessable&quot;, never a silent zero.</p>
+  <figure class="snippet"><pre><code># Illustrative sketch — simplified from the real engine.
+# A gap only counts if it survives a ±20% change
+# in each uncertain parameter.
+
+def robustness(expected_fn, declared, params, threshold):
+    outcomes = set()
+    for name in params:
+        for factor in (0.8, 1.0, 1.2):
+            p = {**params, name: params[name] * factor}
+            expected = expected_fn(p)
+            outcomes.add((expected - declared) / expected &gt; threshold)
+    return &quot;stable&quot; if len(outcomes) == 1 else &quot;unstable&quot;</code></pre><figcaption>The robustness idea: a flag that depends on the exact value of an uncertain coefficient is not a flag — it is reported as unstable.</figcaption></figure>
+  <h2>Safeguards &amp; privacy</h2>
+  <p>A tool that looks at businesses and workers can do harm if it is used carelessly, so the limits are built in:</p>
+  <ul><li>It does not establish wrongdoing, estimate guilt or publish rankings: it suggests where to look, and every decision stays with a person.</li><li>Confidential data stay with the authorized public body; on its own, the platform collects only public information, respecting each site's rules.</li><li>Role-based access with separation of duties: whoever proposes a coefficient cannot approve it.</li><li>A tamper-evident audit trail: every action is chained to the previous one, so any change leaves a trace.</li><li>A new sector starts as a draft and produces no results until it passes automated tests and human approval.</li></ul>
+  <p>Unlike my other projects, Emersione is fully open source: a tool that touches work, businesses and people's rights should be open to scrutiny.</p>
+  <p>Version 3.1 is a complete prototype, but it runs on synthetic data and its coefficients are still hypotheses to be verified. What it needs now cannot be written in code: lawful access to real data, the outcomes of past inspections to measure how often a flag is right, and independent review. If you work in research, in a public administration or in data protection, or you know the field first-hand, <a href="https://github.com/K1m1k/Emersione" target="_blank" rel="noopener">the project is on GitHub</a> and <a href="https://github.com/K1m1k/Emersione/discussions" target="_blank" rel="noopener">its Discussions are open</a>.</p>
+  </div>
+  <p class="note" id="project-note">Emersione is open source (code under EUPL-1.2, documentation under CC BY 4.0): its source code, methodology and known limits are public on GitHub.</p>
+</article>
+
+<footer class="foot">
+  <div class="wrap"><span class="prompt">scintilla</span> — © 2026 K1m1k. All rights reserved.</div>
+</footer>
+</div>
+<script src="../data/content.js"></script>
+<script src="../assets/script.js"></script>
+</body>
+</html>

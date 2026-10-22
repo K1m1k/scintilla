@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- pagina generata da genera_pagine.py: non modificare a mano -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kamishibai — Scintilla</title>
+<meta name="description" content="Recognizes Italian Sign Language (LIS) from a webcam and shows the interpreted words under the video. Lessons are uploaded by an authorized community, so the…">
+<meta name="author" content="K1m1k">
+<link rel="canonical" href="https://k1m1k.github.io/scintilla/projects/kamishibai.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Scintilla">
+<meta property="og:title" content="Kamishibai">
+<meta property="og:description" content="Recognizes Italian Sign Language (LIS) from a webcam and shows the interpreted words under the video. Lessons are uploaded by an authorized community, so the…">
+<meta property="og:url" content="https://k1m1k.github.io/scintilla/projects/kamishibai.html">
+<meta property="og:image" content="https://k1m1k.github.io/scintilla/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+</head>
+<body>
+<canvas id="rain"></canvas>
+<div class="page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../index.html#home">SCIN<b>TILLA</b></a>
+    <nav class="nav-links sub">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#writing">Writing</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<article class="article-page project-page">
+  <a class="back" href="../index.html#projects">← back to projects</a>
+  <h1 id="project-title">Kamishibai</h1>
+  <div class="byline" id="project-meta">Web app · accessibility</div>
+  <div class="tags" id="project-tags"><span class="tag">Web</span><span class="tag">Computer vision</span><span class="tag">LIS</span></div>
+  <p class="project-tagline" id="project-tagline">Understanding someone who signs — and learning, visually, while you do.</p>
+  <div id="project-body" data-static="1">
+  <h2>What it is</h2>
+  <p>Kamishibai is a web app, for desktop or phone, that watches a person signing and shows the interpreted words beneath the video, close to real time. It grew out of a simple wish that predates the current AI boom: to be able to understand someone who uses sign language if they ever asked for help in the street.</p>
+  <p>Authorized members can upload lessons: they perform a sign, type its meaning and save it, so the vocabulary the system recognizes keeps growing.</p>
+  <h2>How it is built</h2>
+  <ul><li>A computer-vision pipeline that extracts hand and face keypoints from the webcam frames, rather than storing raw video.</li><li>Near-real-time processing, because a translation that lags behind is of little use in a real conversation.</li><li>A web interface that works with both computer webcams and phone cameras.</li><li>A guidance frame around the video that turns green at the ideal distance and red when the framing is off — with a generous tolerance, so the user never has to hold an exact position.</li></ul>
+  <p>The app focuses on the official national LIS, with no regional variants and no guessing at a &quot;closest word&quot;: a sign is either recognized or honestly reported as not yet learned.</p>
+  <figure class="snippet"><pre><code># Illustrative sketch — not the real pipeline.
+# Keypoints are normalized so position/scale don't matter;
+# a short sequence of frames is what gets classified.
+
+def normalize(landmarks, origin, scale):
+    return [((x - origin.x) / scale, (y - origin.y) / scale)
+            for (x, y) in landmarks]
+
+def label_for(sequence):
+    # sequence = recent normalized frames
+    return classifier.predict(sequence)   # or 'unknown'</code></pre><figcaption>The idea behind recognition: normalize the keypoints, classify a short window of frames, and prefer an honest &quot;unknown&quot; over a wrong guess.</figcaption></figure>
+  <h2>Security &amp; contributions</h2>
+  <p>Because the community shapes what the system learns, contributions are carefully controlled:</p>
+  <ul><li>Anyone can register, but new accounts cannot contribute until the author grants permission.</li><li>Every new sign is reviewed and approved by the author before it enters the vocabulary.</li><li>Permissions and accounts can be revoked; when that happens, the author decides case by case whether to keep or delete that account's signs.</li><li>The app runs in its own isolated environment, separate from the author's other projects.</li></ul>
+  <p>Kamishibai is openly a work in progress, not a finished product: it is still being tested and improved, with help from its contributors. Anyone who wants to help is welcome to get in touch, including people who can create the illustrated sign examples.</p>
+  </div>
+  <p class="note" id="project-note">This page describes what the project does and how it's built. It intentionally does not publish the full source code or internal structure.</p>
+</article>
+
+<footer class="foot">
+  <div class="wrap"><span class="prompt">scintilla</span> — © 2026 K1m1k. All rights reserved.</div>
+</footer>
+</div>
+<script src="../data/content.js"></script>
+<script src="../assets/script.js"></script>
+</body>
+</html>

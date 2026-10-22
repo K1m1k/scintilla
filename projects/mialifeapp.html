@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- pagina generata da genera_pagine.py: non modificare a mano -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiaLifeApp — Scintilla</title>
+<meta name="description" content="A personal-safety app for Android. One discreet gesture sends an SOS with your location to trusted contacts — built for emergencies, where seconds matter and…">
+<meta name="author" content="K1m1k">
+<link rel="canonical" href="https://k1m1k.github.io/scintilla/projects/mialifeapp.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Scintilla">
+<meta property="og:title" content="MiaLifeApp">
+<meta property="og:description" content="A personal-safety app for Android. One discreet gesture sends an SOS with your location to trusted contacts — built for emergencies, where seconds matter and…">
+<meta property="og:url" content="https://k1m1k.github.io/scintilla/projects/mialifeapp.html">
+<meta property="og:image" content="https://k1m1k.github.io/scintilla/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+</head>
+<body>
+<canvas id="rain"></canvas>
+<div class="page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../index.html#home">SCIN<b>TILLA</b></a>
+    <nav class="nav-links sub">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#writing">Writing</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<article class="article-page project-page">
+  <a class="back" href="../index.html#projects">← back to projects</a>
+  <h1 id="project-title">MiaLifeApp</h1>
+  <div class="byline" id="project-meta">Android app · personal safety</div>
+  <div class="tags" id="project-tags"><span class="tag">Android</span><span class="tag">Kotlin</span><span class="tag">SOS</span></div>
+  <p class="project-tagline" id="project-tagline">A discreet, phone-only safety companion — no server of mine sits between a victim and help.</p>
+  <div id="project-body" data-static="1">
+  <h2>What it is</h2>
+  <p>MiaLifeApp is an Android app for personal safety and protection against assault. The person at risk configures a few trusted contacts in advance. When the app is triggered — discreetly, without lighting up the screen — it asks for help and starts collecting evidence that is meant to survive even if the phone (or the person) does not.</p>
+  <p>It is a project I care about deeply, and one I don't intend to make money from.</p>
+  <h2>How it is built</h2>
+  <p>The guiding decision is architectural: everything runs on the user's own phone. There is no server or service of mine in the middle. The only things that ever leave the device are SMS messages to the chosen contacts and evidence sent to a channel the user already owns.</p>
+  <ul><li>Kotlin, with classic Android Views + XML (not Compose) for broad device compatibility.</li><li>Native platform APIs for sensors, SMS, location and microphone.</li><li>WorkManager for a resilient queue: messages and uploads retry on their own when connectivity returns.</li><li>Configuration stored encrypted on the device.</li><li>Evidence delivered only to user-owned channels (their own cloud drive or mailbox).</li></ul>
+  <h2>Discreet activation</h2>
+  <p>The hard part of a safety app is being triggered without the attacker noticing. MiaLifeApp uses a two-phase model. In normal conditions the app and the phone do nothing visible. Phase 1 is a silent alert, triggered from inside a pocket with a sequence of volume-button presses when a situation starts to feel wrong. Phase 2 is the actual call for help, triggered by a spoken phrase, a different button sequence, or a Bluetooth keyfob.</p>
+  <p>An alternative trigger uses the accelerometer to detect a rhythm of taps on the back of the phone. It relies on the pattern of the taps, not on how hard they are, which would be unreliable. The screen stays dark the whole time: to anyone watching, it should look like someone nervously drumming their fingers.</p>
+  <figure class="snippet"><pre><code>// Illustrative sketch — not the real implementation.
+// Match a *rhythm* (pattern of intervals), never raw force.
+
+fun matches(taps: List&lt;Long&gt;, pattern: List&lt;Long&gt;, tol: Double): Boolean {
+    if (taps.size != pattern.size) return false
+    return taps.zip(pattern).all { (actual, expected) -&gt;
+        kotlin.math.abs(actual - expected) &lt;= expected * tol
+    }
+}</code></pre><figcaption>The concept of the tap-rhythm trigger — a tolerant interval match, so the user never has to be precise to the millisecond.</figcaption></figure>
+  <p>On activation the app sends an &quot;I need help&quot; SMS with the location to the trusted contacts, starts recording audio in short chunks, uploads those chunks, and keeps sending an updated location at regular intervals. If the network drops, messages and uploads are queued and retried automatically; recording never stops just because there is no signal.</p>
+  <h2>Security &amp; privacy</h2>
+  <ul><li>With no backend, there is no central database of victims' data that could be breached.</li><li>A PIN is required to stop the alarm, disarm the app or change its settings. A separate duress PIN can also be set: if an attacker forces the victim to enter it, the app appears to shut down but keeps working.</li><li>Configuration is encrypted at rest on the device.</li><li>Audio is recorded and uploaded in chunks, so at least part of the evidence survives even if the phone is destroyed.</li><li>An offline queue preserves everything until the connection returns.</li></ul>
+  <p>MiaLifeApp is honest about its limits: it is not infallible, aggressive battery-saving settings on some phones can interfere with it, and it is no substitute for calling the emergency services. The setup guide walks the user through every step and asks them to read and confirm the safety notices before finishing.</p>
+  </div>
+  <p class="note" id="project-note">This page describes what the project does and how it's built. It intentionally does not publish the full source code or internal structure.</p>
+</article>
+
+<footer class="foot">
+  <div class="wrap"><span class="prompt">scintilla</span> — © 2026 K1m1k. All rights reserved.</div>
+</footer>
+</div>
+<script src="../data/content.js"></script>
+<script src="../assets/script.js"></script>
+</body>
+</html>

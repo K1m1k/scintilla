@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- pagina generata da genera_pagine.py: non modificare a mano -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShintillaM1A — Scintilla</title>
+<meta name="description" content="A system that tries to simulate how humans think and remember: layered memory, emotional states, metacognition. Ambitious, still under construction.">
+<meta name="author" content="K1m1k">
+<link rel="canonical" href="https://k1m1k.github.io/scintilla/projects/shintillam1a.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Scintilla">
+<meta property="og:title" content="ShintillaM1A">
+<meta property="og:description" content="A system that tries to simulate how humans think and remember: layered memory, emotional states, metacognition. Ambitious, still under construction.">
+<meta property="og:url" content="https://k1m1k.github.io/scintilla/projects/shintillam1a.html">
+<meta property="og:image" content="https://k1m1k.github.io/scintilla/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+</head>
+<body>
+<canvas id="rain"></canvas>
+<div class="page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../index.html#home">SCIN<b>TILLA</b></a>
+    <nav class="nav-links sub">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#writing">Writing</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<article class="article-page project-page">
+  <a class="back" href="../index.html#projects">← back to projects</a>
+  <h1 id="project-title">ShintillaM1A</h1>
+  <div class="byline" id="project-meta">Experimental AI · work in progress</div>
+  <div class="tags" id="project-tags"><span class="tag">Python</span><span class="tag">Cognitive architecture</span></div>
+  <p class="project-tagline" id="project-tagline">An attempt to get closer to the way people process, think and remember.</p>
+  <div id="project-body" data-static="1">
+  <h2>What it is</h2>
+  <p>ShintillaM1A is an experimental system that tries to simulate the human way of thinking and remembering — bringing a machine a little closer to how a person processes information, reasons and recalls, rather than treating memory as a flat storage space.</p>
+  <p>It is an ambitious, unfinished project, and the goal is to make it work as well as possible.</p>
+  <h2>The approach</h2>
+  <p>The architecture is being developed in Python around a few ideas borrowed from human cognition:</p>
+  <ul><li>Layered memory — a fast, short-term working layer feeding a slower, consolidated long-term layer.</li><li>Affective state — an emotional context that influences what the system pays attention to and what it retains.</li><li>Metacognition — a loop that reflects on the system's own reasoning instead of only producing an answer.</li></ul>
+  <figure class="snippet"><pre><code># Illustrative sketch — not the real implementation.
+# Memory is layered; what gets consolidated depends on
+# salience and the current affective state.
+
+def remember(event, state):
+    working.push(event)
+    if salience(event, state) &gt; threshold:
+        longterm.consolidate(event)</code></pre><figcaption>The guiding idea: not everything is stored — salience and emotional state decide what crosses from working memory into the long term.</figcaption></figure>
+  <p>This page only describes the direction and the design: the project is still at an early, exploratory stage.</p>
+  </div>
+  <p class="note" id="project-note">This page describes what the project does and how it's built. It intentionally does not publish the full source code or internal structure.</p>
+</article>
+
+<footer class="foot">
+  <div class="wrap"><span class="prompt">scintilla</span> — © 2026 K1m1k. All rights reserved.</div>
+</footer>
+</div>
+<script src="../data/content.js"></script>
+<script src="../assets/script.js"></script>
+</body>
+</html>

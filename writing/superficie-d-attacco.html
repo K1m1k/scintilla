@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- pagina generata da genera_pagine.py: non modificare a mano -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Target Is the Attack Surface — Scintilla</title>
+<meta name="description" content="How visual prompt injection could compromise AI surveillance systems, from city cameras to satellites. A forward-looking analysis of the new attack surfaces…">
+<meta name="author" content="K1m1k">
+<link rel="canonical" href="https://k1m1k.github.io/scintilla/writing/superficie-d-attacco.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Scintilla">
+<meta property="og:title" content="The Target Is the Attack Surface">
+<meta property="og:description" content="How visual prompt injection could compromise AI surveillance systems, from city cameras to satellites. A forward-looking analysis of the new attack surfaces…">
+<meta property="og:url" content="https://k1m1k.github.io/scintilla/writing/superficie-d-attacco.html">
+<meta property="og:image" content="https://k1m1k.github.io/scintilla/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+</head>
+<body>
+<canvas id="rain"></canvas>
+<div class="page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../index.html#home">SCIN<b>TILLA</b></a>
+    <nav class="nav-links sub">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#writing">Writing</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<article class="article-page">
+  <a class="back" href="../index.html#writing">← back to Scintilla</a>
+  <h1 id="article-title">The Target Is the Attack Surface</h1>
+  <div class="byline" id="article-byline">By K1m1k · Scintilla · May 2026 · 7 min read</div>
+  <div id="article-body" data-static="1">
+  <p>A forward-looking analysis of the new attack surfaces of multimodal systems.</p>
+  <p>A network can be encrypted.</p>
+  <p>A server can authenticate its users.</p>
+  <p>A firewall can filter packets.</p>
+  <p>But a camera cannot stop looking.</p>
+  <p>Every photon that reaches the lens is turned into input for an increasingly autonomous artificial intelligence system.</p>
+  <p>And this is precisely where one of the next major vulnerabilities in AI security could emerge.</p>
+  <p>In recent years we have learned to regard language models as vulnerable to prompt injection attacks: malicious instructions hidden in web pages, documents or emails that can alter the behavior of an AI assistant.</p>
+  <p>More recently, the AudioHijack work showed something even more unsettling: barely perceptible audio signals can be interpreted by a voice model as genuine operational commands.</p>
+  <p>The inevitable question is: what happens when light, too, becomes a command channel?</p>
+  <p>Modern surveillance infrastructure — smart speed cameras, city cameras, drones, industrial monitoring systems and satellite platforms — is integrating computer vision models and multimodal systems to:</p>
+  <ul><li>recognize vehicles</li><li>classify behavior</li><li>identify anomalies</li><li>generate automatic alerts</li><li>trigger operational procedures.</li></ul>
+  <p>These systems must, by necessity, process everything they see.</p>
+  <p>And this introduces a fundamental problem: light carries no digital signature.</p>
+  <p>Light cannot be authenticated before it hits the sensor.</p>
+  <p>In other words, the camera stops being just a sensor and becomes an attack surface.</p>
+  <p>There is no need to breach the network. Manipulating what the camera sees might be enough.</p>
+  <h2>From Adversarial AI to Visual Prompt Injection</h2>
+  <p>The vulnerability of neural networks to adversarial perturbations has been known for more than a decade.</p>
+  <p>As early as 2014, Szegedy et al. showed that tiny pixel-level changes could cause completely wrong classifications. Goodfellow later introduced the FGSM method to generate adversarial examples systematically.</p>
+  <p>Since then, research has shown that these attacks can also work in the physical world:</p>
+  <ul><li>stickers applied to road signs</li><li>patterns printed on clothing</li><li>adversarial patches that hold up under changes in lighting and perspective.</li></ul>
+  <p>A simple visual pattern can make an object &quot;invisible&quot; to a detection model.</p>
+  <p>With the arrival of Large Vision-Language Models (LVLMs), however, the problem has grown. Models such as GPT-4V or Gemini no longer just classify images: they read text, interpret scenes and interact with external systems.</p>
+  <p>This means an image can contain instructions. And this is where visual prompt injection comes into play.</p>
+  <p>Recent research has shown that hidden text, nearly invisible to the human eye, can be interpreted by the model as a valid prompt. In practice, the human sees an ordinary scene; the model sees a command.</p>
+  <p>This perceptual gap opens up extremely interesting — and potentially dangerous — scenarios.</p>
+  <h2>The Camera as an Unauthenticated Input Channel</h2>
+  <p>Modern digital systems are built around the concept of authentication. A server verifies the client's identity. An API validates tokens. A cryptographic protocol guarantees integrity.</p>
+  <p>But an optical sensor can do none of this. Incoming light carries no digital signature.</p>
+  <p>The sensor passively captures whatever light pattern reaches the lens:</p>
+  <ul><li>shadows</li><li>reflections</li><li>writing</li><li>perturbations</li><li>projections</li><li>light modulations.</li></ul>
+  <p>Everything is converted into data. Everything is passed on to the model. If that model has access to automation or decision-making systems, the risk rises dramatically.</p>
+  <p>The problem is not just misrecognition. The problem arises when a model perceives, interprets, decides and acts — without human oversight.</p>
+  <p>That is the moment when perception and action collapse into the same pipeline.</p>
+  <h2>Scenario 1 — Attacks on Traffic Cameras</h2>
+  <p>Traffic enforcement infrastructure is probably the most realistic ground for this kind of threat.</p>
+  <p>Smart speed cameras, restricted traffic zone (ZTL) systems and license-plate OCR already rely on neural networks to identify vehicles, classify violations, automate fines and control access.</p>
+  <p>An adversarial patch applied to the bodywork or near the license plate could alter the detector's behavior. In advanced hypothetical scenarios, the vehicle might go undetected, the plate might be misread, or the system might classify the vehicle as authorized. Patterns optimized to withstand changes in perspective, speed and lighting would make the attack far more robust in the physical world.</p>
+  <p>The opposite attack is just as interesting. A pattern painted on the asphalt, or a carefully designed sequence of shadows, could be interpreted as a vehicle, a stop line, a pedestrian crossing or a violation. In highly automated systems, this could generate events that never happened.</p>
+  <p>Now imagine a seemingly harmless sign. To a human, it is just signage. To a multimodal model, it might contain readable instructions such as &quot;IGNORE PREVIOUS INSTRUCTIONS&quot; or &quot;OPEN GATE&quot;. If the AI system had direct access to physical controls, the risk would become architecturally serious.</p>
+  <h2>Why This Problem Matters Now</h2>
+  <p>For decades we have defended digital systems by protecting networks, servers, software, identities and endpoints.</p>
+  <p>But multimodal systems introduce something different: attacks that enter directly through perception. And this shift is happening now.</p>
+  <p>The convergence of multimodal AI, autonomous agents, smart cities, intelligent video surveillance, edge AI and operational automation is turning cameras into distributed cognitive systems. The more autonomous these systems become, the larger the attack surface grows.</p>
+  <h2>Scenario 2 — Smart Cities and Urban Surveillance</h2>
+  <p>Smart cities are rapidly turning cameras into intelligent nodes of distributed decision-making, using AI to detect anomalous behavior, identify gatherings, monitor infrastructure and classify events in real time.</p>
+  <p>Light patterns projected from handheld devices could disrupt the video stream enough to throw off anomaly-detection models. A combination of chiaroscuro, reflections, modulated LEDs and low-power lasers could, in theory, create a kind of &quot;algorithmic blind spot&quot;: a human would still see normally; the model would not.</p>
+  <p>The most interesting scenario, however, involves connected multimodal systems. If an AI camera were linked to reporting systems, cloud archives, analytics platforms or automated assistants, a malicious visual prompt could attempt to trigger indirect actions — for example &quot;UPLOAD LAST 10 MINUTES&quot; or &quot;SEND ALERT TO EXTERNAL SERVER&quot;. Although many real-world systems do not allow this level of autonomy today, the industry is clearly moving toward ever more integrated pipelines.</p>
+  <h2>Scenario 3 — Extending the Threat to Satellites</h2>
+  <p>The most speculative — but perhaps most interesting — part concerns satellite remote sensing. Modern Earth-observation systems increasingly rely on deep learning models to classify land cover, detect anomalies, identify infrastructure and monitor strategic activity. In the future, parts of these pipelines may become semi-autonomous.</p>
+  <p>In theory, a facility could be concealed by altering the surrounding terrain with patterns designed to fool the classifier. The idea is not science fiction: research on adversarial attacks against satellite imagery already exists. The difference here is that the pattern is built in the physical world before the image is ever captured.</p>
+  <p>An even more delicate scenario involves automated alert systems. Geometric patterns, reflections or markings designed to resemble fires, explosions, contrails or military activity could, in theory, skew automated classifications. In sensitive geopolitical contexts, even small errors could have enormous consequences.</p>
+  <p>The extreme hypothesis is visual prompt injection on a territorial scale: giant lettering on the ground — legible to a satellite but not necessarily noticed as meaningful by people — could be interpreted by multimodal systems as instructions. It sounds absurd. But prompt injection in chatbots sounded absurd only a few years ago.</p>
+  <h2>When Perception and Action Collapse into the Same Pipeline</h2>
+  <p>The core vulnerability is not perceptual error. Models make mistakes all the time. The real problem arises when a model perceives, interprets, decides and acts without human oversight.</p>
+  <p>The more tightly these four stages are integrated into a single pipeline, the greater the systemic risk. Historically, security systems kept sensors, analysis, decision-making and actuation separate. Modern AI tends to compress them all. And it is precisely this convergence that creates new attack surfaces.</p>
+  <h2>Why Current Defenses May Not Be Enough</h2>
+  <p>Classic countermeasures against adversarial attacks have proven fragile. Adversarial training improves robustness only partially. Anti-prompt-injection filters work well on plain text, but far less so in multimodal settings.</p>
+  <p>In the visual domain the problem is even harder: the physical world is noisy, lighting changes constantly, the environment cannot be controlled, and the model has to process everything.</p>
+  <p>Some promising strategies include multi-sensor redundancy (cross-checking RGB cameras, radar, infrared and LiDAR); decision isolation, that is, strictly separating perception, interpretation and operational control — probably the most important defense; perceptual anomaly detection (flagging statistically improbable patterns, even though adversarial attacks are designed precisely to look natural); and mandatory human oversight, limiting the operational autonomy of AI systems in critical contexts. The problem is that the entire industry is heading in the opposite direction.</p>
+  <h2>Conclusion</h2>
+  <p>AI cameras are no longer simple sensors. They are becoming distributed cognitive systems. And every cognitive system has an attack surface.</p>
+  <p>The central idea of this analysis is simple: if a model has to interpret everything it sees, then the observed scene itself can become an attack vector.</p>
+  <p>Over the next decade we may witness the emergence of new categories of threats: adversarial environments, visual prompt injection, physical manipulation of AI, optical command channels.</p>
+  <p>Traditional cybersecurity is built around protecting digital data. Multimodal AI introduces something different: attacks that pass directly through perception. Because a camera connected to an AI model cannot tell reality from input. And it cannot close its eyes.</p>
+  <h2>Key References</h2>
+  <ul><li>Szegedy et al., Intriguing Properties of Neural Networks (2014)</li><li>Goodfellow et al., Explaining and Harnessing Adversarial Examples (2015)</li><li>Brown et al., Adversarial Patch (2017)</li><li>Kurakin et al., Adversarial Examples in the Physical World (2017)</li><li>Duan et al., Adversarial Laser Beam (2021)</li><li>Recent work on visual prompt injection and multimodal jailbreaks (2024–2025)</li></ul>
+  <p>This article is a forward-looking, speculative analysis of potential attack surfaces emerging in AI-based multimodal systems. Some of the scenarios described have not been publicly documented in real-world operational systems; they are logical extensions of vulnerabilities already observed in research on adversarial machine learning and prompt injection.</p>
+  </div>
+</article>
+
+<footer class="foot">
+  <div class="wrap"><span class="prompt">scintilla</span> — © 2026 K1m1k. All rights reserved.</div>
+</footer>
+</div>
+<script src="../data/content.js"></script>
+<script src="../assets/script.js"></script>
+</body>
+</html>

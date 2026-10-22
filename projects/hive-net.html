@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- pagina generata da genera_pagine.py: non modificare a mano -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hive-net — Scintilla</title>
+<meta name="description" content="A network of private PCs that share their spare computing power, with the owner's consent, inside a transparent sandbox. Contributors earn credits to spend on…">
+<meta name="author" content="K1m1k">
+<link rel="canonical" href="https://k1m1k.github.io/scintilla/projects/hive-net.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Scintilla">
+<meta property="og:title" content="hive-net">
+<meta property="og:description" content="A network of private PCs that share their spare computing power, with the owner's consent, inside a transparent sandbox. Contributors earn credits to spend on…">
+<meta property="og:url" content="https://k1m1k.github.io/scintilla/projects/hive-net.html">
+<meta property="og:image" content="https://k1m1k.github.io/scintilla/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+</head>
+<body>
+<canvas id="rain"></canvas>
+<div class="page">
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../index.html#home">SCIN<b>TILLA</b></a>
+    <nav class="nav-links sub">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#writing">Writing</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<article class="article-page project-page">
+  <a class="back" href="../index.html#projects">← back to projects</a>
+  <h1 id="project-title">hive-net</h1>
+  <div class="byline" id="project-meta">Distributed network · volunteer computing</div>
+  <div class="tags" id="project-tags"><span class="tag">Python</span><span class="tag">Node.js</span><span class="tag">WebAssembly</span></div>
+  <p class="project-tagline" id="project-tagline">Bees lend power, the hive keeps the honey — volunteer compute that is honest about what it runs on your machine.</p>
+  <div id="project-body" data-static="1">
+  <h2>What it is</h2>
+  <p>hive-net (working name: Alveare — &quot;beehive&quot;) is a network of private, heterogeneous PCs that lend their spare compute. An orchestrator server splits large AI-training jobs into many small, tagged chunks, hands them out to the nodes, and reassembles the results as they come back.</p>
+  <p>People who run a node sign up, choose the days and hours they want to lend power, and earn credits they can spend to train their own projects or to obtain data that has already been processed. Those who don't lend computing power pay to use the network.</p>
+  <h2>How it is built</h2>
+  <ul><li>An orchestrator server (Python) that fragments work, distributes it and reassembles it.</li><li>A node agent (&quot;worker bee&quot;, Node.js) that pulls chunks and returns results.</li><li>A WebAssembly sandbox that isolates every job from the host machine.</li><li>Version 1 handles text and tables only; images come later.</li></ul>
+  <p>The nodes monitor themselves and contact the server only when needed, instead of the server constantly polling them.</p>
+  <h2>Security &amp; privacy</h2>
+  <p>Lending your machine to a network is an act of trust, so the design puts isolation and data protection first:</p>
+  <ul><li>Every job runs inside a WebAssembly sandbox and cannot reach the host system.</li><li>Original data is visible only to the server and the requesting node, and is deleted when the job ends; the server keeps only the processed results.</li><li>Work packets travel fragmented and encrypted, and are decrypted one piece at a time inside an area of the client that the machine's owner cannot access; the node keeps only what it needs and discards the rest.</li><li>All traffic is routed through the server.</li><li>Credits are internal, non-transferable points — not a currency.</li></ul>
+  <figure class="snippet"><pre><code>// Illustrative sketch — not the real protocol.
+// A node only ever sees one decrypted fragment at a time,
+// inside the sandbox; the plaintext never lands on disk.
+
+async function runChunk(envelope) {
+  const piece = await decryptInSandbox(envelope.sealed);
+  const result = await wasm.process(piece);  // isolated from host
+  wipe(piece);                               // nothing kept locally
+  return sign(result, envelope.tag);
+}</code></pre><figcaption>The privacy idea: fragment, encrypt, and decrypt one piece at a time inside an isolated area, so neither the node owner nor the host OS ever sees the whole input.</figcaption></figure>
+  <p>The node interface and the way the project presents itself are meant to be friendly — almost a game — so that lending computing power feels approachable rather than intimidating. Version 1 is currently in its first round of testing.</p>
+  </div>
+  <p class="note" id="project-note">This page describes what the project does and how it's built. It intentionally does not publish the full source code or internal structure.</p>
+</article>
+
+<footer class="foot">
+  <div class="wrap"><span class="prompt">scintilla</span> — © 2026 K1m1k. All rights reserved.</div>
+</footer>
+</div>
+<script src="../data/content.js"></script>
+<script src="../assets/script.js"></script>
+</body>
+</html>

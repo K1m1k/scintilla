@@ -141,7 +141,7 @@ function scRenderBody(body) {
   if (pc && S.projects) {
     pc.innerHTML = S.projects.map((p) => {
       const tags = (p.tags || []).map((t) => `<span class="tag">${esc(t)}</span>`).join('');
-      const href = `projects/project.html?id=${encodeURIComponent(p.id)}`;
+      const href = `projects/${encodeURIComponent(p.id)}.html`;
       return `<a class="card reveal" href="${href}">
         <h3>${esc(p.name)}</h3>
         <div class="meta">${esc(p.meta)}</div><p>${esc(p.desc)}</p>
@@ -151,7 +151,7 @@ function scRenderBody(body) {
   }
 
   const articles = (S.articles || []);
-  const link = (a) => `writing/article.html?id=${encodeURIComponent(a.id)}`;
+  const link = (a) => `writing/${encodeURIComponent(a.id)}.html`;
 
   const fc = document.getElementById('featured');
   const featured = articles.find((a) => a.featured);
@@ -174,10 +174,11 @@ function scRenderBody(body) {
 /* Article page: render the body of the article named by ?id=. */
 (function articlePage() {
   const root = document.getElementById('article-body');
-  if (!root) return;
+  if (!root || root.dataset.static) return;   // static page: already rendered
   const S = window.SITE || {};
   const id = new URLSearchParams(location.search).get('id');
   const a = (S.articles || []).find((x) => x.id === id);
+  if (a) { location.replace(encodeURIComponent(a.id) + '.html'); return; }  // old links -> static page
   if (!a) {
     document.getElementById('article-title').textContent = 'Article not found';
     return;
@@ -197,11 +198,12 @@ function scRenderBody(body) {
 /* Project page: render the project named by ?id=. */
 (function projectPage() {
   const root = document.getElementById('project-body');
-  if (!root) return;
+  if (!root || root.dataset.static) return;   // static page: already rendered
   const S = window.SITE || {};
   const esc = scEsc;
   const id = new URLSearchParams(location.search).get('id');
   const p = (S.projects || []).find((x) => x.id === id);
+  if (p) { location.replace(encodeURIComponent(p.id) + '.html'); return; }  // old links -> static page
   if (!p) {
     document.getElementById('project-title').textContent = 'Project not found';
     return;
@@ -219,6 +221,32 @@ function scRenderBody(body) {
     : '<p class="mono-faint">More details coming soon.</p>';
   const note = document.getElementById('project-note');
   if (note && p.detail && p.detail.note) note.textContent = p.detail.note;
+})();
+
+/* Favicon: the terminal cursor blinks in the browser tab (static if reduced motion). */
+(function blinkingFavicon() {
+  const link = document.querySelector('link[rel="icon"]');
+  if (!link || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const svg = (cursor) => 'data:image/svg+xml,' + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">' +
+    '<rect width="64" height="64" rx="12" fill="#050608"/>' +
+    '<path d="M15 21 L27 32 L15 43" fill="none" stroke="#00ace6" stroke-width="6" ' +
+    'stroke-linecap="round" stroke-linejoin="round"/>' +
+    (cursor ? '<rect x="31" y="40" width="18" height="6" rx="1.5" fill="#e7edf2"/>' : '') +
+    '</svg>');
+  const on = svg(true), off = svg(false);
+  let visible = true;
+  let current = link;
+  setInterval(() => {
+    visible = !visible;
+    // Replace the <link> element: browsers reliably redraw the tab icon only on a new element.
+    const next = document.createElement('link');
+    next.rel = 'icon';
+    next.type = 'image/svg+xml';
+    next.href = visible ? on : off;
+    current.replaceWith(next);
+    current = next;
+  }, 530);
 })();
 
 /* Mobile menu. */

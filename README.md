@@ -12,8 +12,12 @@ index.html                     single page: home, projects, writing, about, cont
 data/content.js                >>> EDIT THIS to change projects, articles and settings
 assets/style.css               styles
 assets/script.js               intro, background, menu, rendering, contact form
-writing/article.html           one template that shows any article by ?id=
-projects/project.html          one template that shows any project by ?id=
+writing/<id>.html              one static page per article   (generated — do not edit)
+projects/<id>.html             one static page per project   (generated — do not edit)
+writing/article.html           old ?id= links: redirect to the static pages
+projects/project.html          old ?id= links: redirect to the static pages
+sitemap.xml                    list of pages for search engines (generated)
+assets/og-image.png            preview image for social networks
 ```
 
 ## Everything lives in `data/content.js`
@@ -21,7 +25,7 @@ Both the articles and the project pages are rendered from this one file. No buil
 step: edit it, save, reload.
 
 ### Articles
-Each article has its own page (`writing/article.html?id=<id>`). To add one, copy a
+Each article has its own page (`writing/<id>.html`, generated). To add one, copy a
 block in the `articles` list, give it a unique `id`, and write the text in `body`:
 ```js
 {
@@ -43,7 +47,7 @@ Set `featured: true` on the one to highlight at the top. An empty `body: []` sho
 
 ### Projects (clickable)
 Each project card on the home page links to its own page
-(`projects/project.html?id=<id>`). A project block looks like:
+(`projects/<id>.html`, generated). A project block looks like:
 ```js
 {
   id: "my-project",
@@ -90,3 +94,10 @@ After a minute the site is live at the address GitHub shows there.
 - **Colors:** variables at the top of `assets/style.css` (`--cyan`, `--bg`, …).
 - **Intro text:** the `lines` array in `assets/script.js`.
 - **About / sections:** `index.html`.
+
+## Static pages, Google and social previews
+The static pages in `writing/`, `projects/` and `sitemap.xml` are generated from
+`data/content.js` by `genera_pagine.py` (kept outside this repository, next to it in
+`../strumenti/`), which runs automatically before every preview and publish. Each page
+has its own title, description, canonical URL and social preview, and its text is
+already in the HTML, so search engines and link previews can read it.

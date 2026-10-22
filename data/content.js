@@ -13,7 +13,7 @@ window.SITE = {
   medium: "https://medium.com/@ilxuomo",
 
   /* --- projects ------------------------------------------------------- */
-  // Each project has its own page: projects/project.html?id=<id>
+  // Each project has its own page: projects/<id>.html (generated)
   // Fields:
   //   id      unique slug used in the URL
   //   name, meta, desc, tags   -> the card on the home page
@@ -38,7 +38,7 @@ window.SITE = {
         body: [
           { h2: "What it is" },
           "Emersione — Italian for \"surfacing\" — is a platform for spotting possible undeclared and irregular work. It compares what a business declares (staff, hours, labour costs, output) with what its activity would realistically require, and points out the gaps that deserve a closer look by a human inspector.",
-          "It grew out of an essay I wrote, [Can an Algorithm Help Bring Undeclared Work to Light?](https://k1m1k.github.io/scintilla/writing/article.html?id=algoritmo-lavoro-irregolare) I wanted to find out whether that idea could stand up as working software. It is the project I would most like to see in the hands of public institutions.",
+          "It grew out of an essay I wrote, [Can an Algorithm Help Bring Undeclared Work to Light?](https://k1m1k.github.io/scintilla/writing/algoritmo-lavoro-irregolare.html) I wanted to find out whether that idea could stand up as working software. It is the project I would most like to see in the hands of public institutions.",
           { h2: "How it is built" },
           { ul: [
             "Python, with Starlette and Jinja2 for a lightweight web interface and SQLite for local storage.",
@@ -244,7 +244,7 @@ window.SITE = {
   ],
 
   /* --- articles (hosted ON the site, not on Medium) ------------------- */
-  // Each article has its own page: writing/article.html?id=<id>
+  // Each article has its own page: writing/<id>.html (generated)
   // Set "featured: true" on the one to highlight at the top.
   articles: [
     {
